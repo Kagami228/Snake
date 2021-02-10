@@ -14,6 +14,10 @@ namespace Snake
             y = p.y;
             s = p.s;
         }
+        public Point()
+        {
+
+        }
         public Point(int xx,int yy, char ss) {
             x = xx;y = yy;  s = ss;
         }
@@ -29,6 +33,13 @@ namespace Snake
                 y = y + offset;
             }
         }
+
+        internal void Clear()
+        {
+            s = ' ';
+            Drowi();
+        }
+
         public void Drowi()
         {
             Console.SetCursorPosition(x, y);
