@@ -12,7 +12,6 @@ namespace Snake
         public void Drowi()
         {
             Console.SetCursorPosition(x, y);
-
             Console.Write(s);
         }
     }
