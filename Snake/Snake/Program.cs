@@ -6,20 +6,13 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            int x1 = 1, y1 = 3;
-            char simbol = '*';
-
-            Drowi(x1, y1, simbol);
-            int x2 = 5, y2 = 5;
-            char sim = '&';
-            Drowi(x2, y2, sim);
+            Point p1 = new Point();
+            p1.x = 1; p1.y = 3; p1.s = '*';
+            p1.Drowi();
+            Point p2 = new Point();
+            p2.x = 4;p2.y = 5;p2.s = '$';
+            p2.Drowi();
             Console.ReadLine();
-        }
-        static void Drowi(int x,int y, char s)
-        {
-            Console.SetCursorPosition(x, y);
-
-            Console.Write(s);
         }
     }
 }
