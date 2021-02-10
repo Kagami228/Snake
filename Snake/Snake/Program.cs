@@ -10,8 +10,7 @@ namespace Snake
             Console.SetBufferSize(80, 25);
            // Console.SetWindowSize(40, 40);
             Point p1 = new Point(1,8,'s');
-            Point p2 = new Point();
-            p2.x = 4;p2.y = 5;p2.s = '$';
+            Point p2 = new Point(4,7,'c');
             p1.Drowi();
             p2.Drowi();
 
@@ -23,6 +22,10 @@ namespace Snake
             Vl.Drowi();
             Vl2.Drowi();
             Hl2.Drowi();
+
+            Point p = new Point(2, 2,'*');
+            Snake snake = new Snake(p, 4, Direction.Right);
+            snake.Drowi();
             Console.ReadLine();
         }
     }

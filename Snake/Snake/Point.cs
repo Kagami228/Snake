@@ -9,9 +9,25 @@ namespace Snake
         public int x, y;
         public char s;
         
-        public Point(){}
+        public Point(Point p){
+            x = p.x;
+            y = p.y;
+            s = p.s;
+        }
         public Point(int xx,int yy, char ss) {
             x = xx;y = yy;  s = ss;
+        }
+        public void Move(int offset, Direction dir)
+        {
+            if (dir == Direction.Right){
+                x = x + offset;
+            }else if(dir== Direction.LEFT){
+                x = x - offset;
+            }else if (dir == Direction.UP){
+                y = y - offset;
+            }else if (dir == Direction.DOWN){
+                y = y + offset;
+            }
         }
         public void Drowi()
         {
