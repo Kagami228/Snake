@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Snake
 {
-    class LineHorizontal
+    class LineHorizontal: Figura
     {
-        List<Point> pList;
         public LineHorizontal(int xLeft, int xRight, int y, char s)
         {
             pList = new List<Point>();
@@ -15,12 +14,6 @@ namespace Snake
                 Point p = new Point(x, y, s);
                 pList.Add(p);
             }
-        }
-        public void Drowi()
-        {
-            foreach(Point p_i in pList)
-            {
-                p_i.Drowi();            }
         }
     }
 }
