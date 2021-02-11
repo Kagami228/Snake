@@ -8,20 +8,17 @@ namespace Snake
     class Snake: Figura
     {
         Direction dir;
-        public Snake(Point tail,int length, Direction _direction)
-        {
+        public Snake(Point tail,int length, Direction _direction){
             dir = _direction;
             pList = new List<Point>();
-            for(int i = 0; i < length; i++)
-            {
+            for(int i = 0; i < length; i++){
                 Point p = new Point(tail);
                 p.Move(i, _direction);
                 pList.Add(p);
             }
         }
 
-        internal void Move()
-        {
+        internal void Move(){
             //throw new NotImplementedException();
             Point tail = pList.First();
             pList.Remove(tail);
@@ -31,15 +28,14 @@ namespace Snake
             head.Drowi();
         }
 
-        private Point GetNextPoint()
-        {
+        private Point GetNextPoint(){
             Point head = pList.Last();
             Point nextPoint = new Point(head);
             nextPoint.Move(1, dir);
             return nextPoint;
         }
-        public void Snake_Move(ConsoleKey key)
-        {
+
+        public void Snake_Move(ConsoleKey key){
             if (key== ConsoleKey.LeftArrow){
                 dir = Direction.LEFT;
             }else if (key== ConsoleKey.RightArrow){
@@ -48,6 +44,17 @@ namespace Snake
                 dir = Direction.UP;
             }else if (key == ConsoleKey.DownArrow){
                 dir = Direction.DOWN;
+            }
+        }
+
+        internal bool eat(Point food){
+            Point head = GetNextPoint();
+            if (head.isHit(food)){
+                food.s = head.s;
+                pList.Add(food);
+                return true;
+            }else{
+                return false;
             }
         }
     }

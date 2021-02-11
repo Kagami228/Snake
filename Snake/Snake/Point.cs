@@ -21,8 +21,7 @@ namespace Snake
         public Point(int xx,int yy, char ss) {
             x = xx;y = yy;  s = ss;
         }
-        public void Move(int offset, Direction dir)
-        {
+        public void Move(int offset, Direction dir){
             if (dir == Direction.RIGHT){
                 x = x + offset;
             }else if(dir== Direction.LEFT){
@@ -34,16 +33,18 @@ namespace Snake
             }
         }
 
-        internal void Clear()
-        {
+        internal void Clear(){
             s = ' ';
             Drowi();
         }
 
-        public void Drowi()
-        {
+        public void Drowi(){
             Console.SetCursorPosition(x, y);
             Console.Write(s);
+        }
+
+        public bool isHit(Point p){
+            return p.x == this.x && p.y == this.y;
         }
     }
 }
