@@ -11,25 +11,52 @@ namespace Snake
         {
             Console.SetWindowSize(80, 25);
             Console.SetBufferSize(80, 25);
+            bool o = true, b= true;
+            Console.Write("Введите ширину игрового поля от 10-80 w: ");
+            int w = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Введите ширину игрового поля от 10-25 h: ");
+            int h = Convert.ToInt32(Console.ReadLine());
+            while (o && b) {
+                if ((w<10) || (w> 80)){
+                    Console.Write("Ширина не в диапазоне от 10 до 80 введите ещё раз w: ");
+                    w = Convert.ToInt32(Console.ReadLine());
+                }
+                else{
+                    o = false;
+                }if((h < 10) || (h > 25)){
+                    Console.Write("Высота не в диапазоне от 10 до 25 введите ещё раз h: ");
+                    h = Convert.ToInt32(Console.ReadLine());
+                }
+                else{
+                    b = false;
+                }
 
-            LineHorizontal Hl = new LineHorizontal(0,78,0,'+');
-            VerticalLine Vl = new VerticalLine(0, 24, 0, '+');
-            LineHorizontal Hl2 = new LineHorizontal(0, 78, 24, '+');
-            VerticalLine Vl2 = new VerticalLine(0, 24, 78, '+');
-            Hl.Drowi();
-            Vl.Drowi();
-            Vl2.Drowi();
-            Hl2.Drowi();
+            }
+            Console.Clear();
+            Wall walls = new Wall(w, h);
+            walls.Drowi();
 
-            Point p = new Point(4, 5,'*');
+            Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Drowi();
 
-            FoodCreator foodcreator = new FoodCreator(80, 25, '$');
+            FoodCreator foodcreator = new FoodCreator(w, h, '$');
             Point food = foodcreator.CreateFood();
             food.Drowi();
 
-            while (true){
+            while (true) {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("ВЫ ПРОИГРАЛИ !");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Нажмите что бы закончить");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+                }
+
                 if (snake.Eat(food)){
                     food = foodcreator.CreateFood();
                     food.Drowi();

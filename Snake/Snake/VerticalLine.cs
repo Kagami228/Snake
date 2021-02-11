@@ -15,5 +15,14 @@ namespace Snake
                 pList.Add(p);
             }
         }
+        public override void Drowi()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            foreach (Point f in pList)
+            {
+                f.Drowi();
+            }//base.Drowi();
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 }
