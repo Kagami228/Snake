@@ -13,7 +13,7 @@ namespace Snake
             pList = new List<Point>();
             for(int i = 0; i < length; i++){
                 Point p = new Point(tail);
-                p.Move(i, _direction);
+                p.Move(i, dir);
                 pList.Add(p);
             }
         }
@@ -28,7 +28,7 @@ namespace Snake
             head.Drowi();
         }
 
-        private Point GetNextPoint(){
+        public Point GetNextPoint(){
             Point head = pList.Last();
             Point nextPoint = new Point(head);
             nextPoint.Move(1, dir);
@@ -47,9 +47,9 @@ namespace Snake
             }
         }
 
-        internal bool eat(Point food){
+        internal bool Eat(Point food){
             Point head = GetNextPoint();
-            if (head.isHit(food)){
+            if (head.IsHit(food)){
                 food.s = head.s;
                 pList.Add(food);
                 return true;

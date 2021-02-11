@@ -18,9 +18,11 @@ namespace Snake
         {
 
         }
-        public Point(int xx,int yy, char ss) {
-            x = xx;y = yy;  s = ss;
+        public Point(int x,int y, char s) {
+            this.x = x;  this.y = y;  this.s = s;
         }
+
+
         public void Move(int offset, Direction dir){
             if (dir == Direction.RIGHT){
                 x = x + offset;
@@ -43,8 +45,12 @@ namespace Snake
             Console.Write(s);
         }
 
-        public bool isHit(Point p){
+        public bool IsHit(Point p){
             return p.x == this.x && p.y == this.y;
+        }
+        public override string ToString()
+        {
+            return x + ", " + y + ", " + s;
         }
     }
 }

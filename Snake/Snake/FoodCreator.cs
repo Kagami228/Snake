@@ -8,8 +8,10 @@ namespace Snake
 
     class FoodCreator
     {
-        int h, w;
+        int w;
+        int h;
         char s;
+
         Random random = new Random();
         public FoodCreator(int w,int  h,char s)
         {
