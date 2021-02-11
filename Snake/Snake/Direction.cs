@@ -7,7 +7,7 @@ namespace Snake
     enum Direction
     {
         LEFT,
-        Right,
+        RIGHT,
         UP,
         DOWN
     }

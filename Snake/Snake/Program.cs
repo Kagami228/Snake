@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
+
 namespace Snake
 {
     class Program
@@ -8,11 +10,6 @@ namespace Snake
         {
             Console.SetWindowSize(80, 25);
             Console.SetBufferSize(80, 25);
-           // Console.SetWindowSize(40, 40);
-            Point p1 = new Point(1,8,'s');
-            Point p2 = new Point(4,7,'c');
-            p1.Drowi();
-            p2.Drowi();
 
             LineHorizontal Hl = new LineHorizontal(0,78,0,'-');
             VerticalLine Vl = new VerticalLine(1, 24, 0, '!');
@@ -24,10 +21,20 @@ namespace Snake
             Hl2.Drowi();
 
             Point p = new Point(2, 2,'*');
-            Snake snake = new Snake(p, 4, Direction.Right);
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Drowi();
             snake.Move();
-            Console.ReadLine();
+
+            while (true){
+                if (Console.KeyAvailable){
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.Snake_Move(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
+
+            //Console.ReadLine();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Snake
         }
         public void Move(int offset, Direction dir)
         {
-            if (dir == Direction.Right){
+            if (dir == Direction.RIGHT){
                 x = x + offset;
             }else if(dir== Direction.LEFT){
                 x = x - offset;
